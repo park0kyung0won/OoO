@@ -17,13 +17,12 @@ int cnt_IntAlu = 0;
 int cnt_MemRead = 0;
 int cnt_MemWrite = 0;
 
-void dump_1()
+void dump_1(struct ROB *rob, struct CA_status *rob_status)
 {
 }
 
-void dump_2(struct ROB *rob, struct CA_status rob_status, struct RS *rs, struct CA_status rs_status)
+void dump_2(struct ROB *rob, struct CA_status *rob_status, struct RS *rs, struct CA_status *rs_status)
 {
-
 }
 
 void fetch(struct CONFIG *config, struct FQ *fetch_queue, struct CA_status *fq_status, struct INST *arr_inst)
@@ -43,7 +42,7 @@ void fetch(struct CONFIG *config, struct FQ *fetch_queue, struct CA_status *fq_s
 
 void decode(struct CONFIG *config, struct FQ *fetch_queue, struct CA_status *fq_status, struct RS *rs_ele, struct RAT *rat, struct ROB *rob, struct CA_status *rob_status)
 {
-	if ( (*fq_status).occupied > 0 && decoded < (*config).Width)
+	if ( (*fq_status).occupied > 0 && decoded < (*config).Width && (*rob_status).occupied < (*rob_status).size)
 	{
 		// Putting first element of Fetch Queue to Reservation Station	
 		(*rs_ele).is_valid = true;
