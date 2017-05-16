@@ -159,7 +159,7 @@ void commit(struct CONFIG *config, struct ROB *rob, struct CA_status *rob_status
 	int num_of_retire = 0;
 	for (i = 0; i < (*rob_status).occupied; i++)
 	{
-		if (rob[i].status == C)
+		if (rob[(*rob_status).head + i].status == C)
 		{
 			num_of_retire++;
 		}

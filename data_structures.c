@@ -13,5 +13,5 @@ void ca_cnt_pop(struct CA_status *status)
 
 int ca_next_pos(struct CA_status *status)
 {
-	return (*status).head + (*status).occupied;
+	return ((*status).head + (*status).occupied) % (*status).size;
 }
